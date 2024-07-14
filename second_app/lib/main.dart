@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:hexcolor/hexcolor.dart';
+import 'package:second_app/colors.dart';
 
 void main() {
   runApp(const WidgetDetail());
@@ -21,20 +24,39 @@ class _WidgetDetailState extends State<WidgetDetail> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        textTheme: GoogleFonts.acmeTextTheme(),
+        
+      ),
       home: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          backgroundColor: Colors.green,
-          title: const Text("Haytek Demo V1"),
+          backgroundColor: HexColor(primaryColor),
+          title: const Text("Haytek Demo V1",style: TextStyle(
+            letterSpacing: 5,
+            fontFamily: "FirstFont"
+          ),),
           leading: const Text("ICON ALANI"),
         ),
         body:  Center(
-          child:  Text(value.toString()),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(value.toString(),style: GoogleFonts.acme(
+                fontSize: 40,
+                color: HexColor(primaryColor)
+              )),
+                Text("2024 Flutter ",style: TextStyle(
+                color: HexColor("FFAAAA"),
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),)
+          ],),
         ),
       floatingActionButton: FloatingActionButton(
         child: Text("+"),
         onPressed:  incrementValue,
-        backgroundColor: Colors.grey,
+        backgroundColor: HexColor(thirdColor),
       ),
       )
     );
