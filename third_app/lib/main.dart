@@ -12,6 +12,22 @@ class ThirdApp extends StatefulWidget {
 }
 
 class _ThirdAppState extends State<ThirdApp> {
+  int value = 0;
+  void increaseValue()
+  {
+    setState(() {
+      value++;
+    });
+  }
+
+  void decreaseValue()
+  {
+    setState(() {
+        value--;
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,20 +38,22 @@ class _ThirdAppState extends State<ThirdApp> {
           ),),
           backgroundColor: const Color.fromARGB(255, 236, 78, 78),
         ),
-        body: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: <Widget>[
-           const  Text("Mami  "),
-            ElevatedButton(onPressed: (){}, child: const  Text("Tıkla")),
-            Container(
-              padding: const EdgeInsets.all(40),
-              color: Colors.green,
-               child: const Text("Container"),
-            )
-          ],
-        ),
-        ),
+        body:Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+          ElevatedButton.icon(onPressed: increaseValue, label: Text("+")),
+          ElevatedButton.icon(onPressed:decreaseValue, label: Text("-")),
+          Container(
+            padding: EdgeInsets.all(10),
+            margin: EdgeInsets.all(5),
+            color: Colors.blueGrey,
+            child: Text("Result: "+value.toString()),
+          
+          )
+        ],
+        ) 
+         
+      ),
     );
   }
 }
